@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quote Segmentation - Split by Selection</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    textarea { width: 100%; height: 150px; }
+    .btn { margin: 10px 0; padding: 8px 12px; cursor: pointer; }
+    .btn-primary { background: #007BFF; color: white; border: none; }
+    .card { border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-top: 10px; }
+    .card input { display: block; margin-top: 5px; width: 100%; padding: 5px; }
+  </style>
+</head>
+<body>
+
+<h2>Review OCR Results (Selection Mode)</h2>
+
+<p>Select text below and click "Create Segment".</p>
+<textarea id="ocrText">This is the full OCR output. It may contain multiple quotes from different authors. The user can select text and turn them into segments.</textarea>
+
+<button class="btn btn-primary" onclick="createSegment()">Create Segment</button>
+
+<div id="segments"></div>
+
+<script>
+function createSegment() {
+  const textArea = document.getElementById('ocrText');
+  const selectedText = textArea.value.substring(textArea.selectionStart, textArea.selectionEnd);
+
+  if (!selectedText.trim()) {
+    alert("Please select some text to segment.");
+    return;
+  }
+
+  const segmentsContainer = document.getElementById('segments');
+  const card = document.createElement('div');
+  card.className = 'segment';
+  card.innerHTML = `
+    <textarea>${selectedText}</textarea>
+    <input type="text" placeholder="Author">
+    <input type="text" placeholder="Category">
+  `;
+  segmentsContainer.appendChild(card);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+@import url("parent.css");
+
+/* Layout */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+h1 {
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.muted {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.search input {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  min-width: 40vw;
+  font-size: 0.95rem;
+}
+
+.search input:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.2);
+}
+
+.count {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  background: var(--highlight-color);
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn:hover {
+  background: #d19a2c;
+}
+
+button.btn {
+  border: none;
+}
+
+/* Grid & Cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card .row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.card .title {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--accent-color);
+}
+
+.card .quote {
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.card .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* Chips (tags) */
+.chip {
+  display: inline-block;
+  background: #f2f2f2;
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+/* Empty state */
+.empty {
+  text-align: center;
+  padding: 3rem;
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+}
+
+.empty strong {
+  color: var(--accent-color);
+}
