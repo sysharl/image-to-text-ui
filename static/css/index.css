@@ -2,7 +2,7 @@
 
 /* Layout */
 .container {
-  max-width: 960px;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -46,8 +46,11 @@ h1 {
   color: #555;
 }
 
-/* Buttons */
-.btn {
+button {
+  background-color: white;
+}
+
+#upload-btn {
   display: inline-block;
   padding: 0.5rem 1rem;
   font-weight: 500;
@@ -60,29 +63,32 @@ h1 {
   transition: 0.2s ease;
 }
 
-.btn:hover {
+#upload-btn:hover {
   background: #d19a2c;
 }
 
-button.btn {
+#upload-btn.btn {
   border: none;
 }
 
 /* Grid & Cards */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  column-count: 1;
+  column-gap: 1.5rem;
 }
 
 .card {
+  display: inline-block;
+  margin: 0.5rem 1rem;
+  width: 90%;
+  break-inside: avoid;
   background: #fff;
   border-radius: 12px;
   padding: 1rem 1.2rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-self: start;
 }
 
 .card .row {
@@ -103,7 +109,6 @@ button.btn {
   margin-bottom: 0.75rem;
   line-height: 1.4;
 }
-
 .card .meta {
   display: flex;
   flex-wrap: wrap;
@@ -132,4 +137,26 @@ button.btn {
 
 .empty strong {
   color: var(--accent-color);
+}
+
+.actions {
+  width: 80px;
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+.title {
+  width: 90%;
+}
+@media (min-width: 600px) {
+  .grid {
+    column-count: 2;
+  }
+}
+
+/* Desktop */
+@media (min-width: 900px) {
+  .grid {
+    column-count: 3;
+  }
 }

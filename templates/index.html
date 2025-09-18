@@ -26,23 +26,25 @@
           ><span id="visibleCount">0</span> /
           <span id="totalCount">{{ quotes|length }}</span> shown</span
         >
-        <a class="btn" href="/upload">＋ Add Quote</a>
+        <a class="btn" id="upload-btn" href="/upload">＋ Add Quote</a>
       </div>
 
       {% if quotes %}
       <div id="grid" class="grid">
         {% for q in quotes %}
         <article
-          class="card"
+          class="card col-3"
           data-search="{{ (q.quote ~ ' ' ~ (q.author or '') ~ ' ' ~ (q.title or '') ~ ' ' ~ (q.category or '') ~ ' ' ~ (q.actor or '')) | lower }}"
         >
           <div class="row">
             <div class="title">{{ q.title or 'Untitled' }}</div>
             <div class="actions">
-              <button class="btn" onclick="copyQuote('{{ q.id }}')">
-                Copy
+              <button onclick="copyQuote('{{ q.id }}')">
+                <img src="{{ url_for('static', filename='icon/Copy-48.png')}}" width=20 height=20/>
               </button>
-              <a class="btn" href="/edit/{{ q.id }}">Edit</a>
+              <!--<a class="btn" href="/edit/{{ q.id }}">
+                <img src="{{ url_for('static', filename='icon/Edit-48.png')}}" width=20 height=20/>
+              </a>-->
             </div>
           </div>
 
@@ -53,12 +55,7 @@
             %} {% if q.actor %}<span class="chip">🎬 {{ q.actor }}</span>{%
             endif %} {% if q.category %}<span class="chip"
               >🏷️ {{ q.category }}</span
-            >{% endif %} {% if q.created_at %}
-            <span class="chip" title="{{ q.created_at }}"
-              >{{ q.created_at.strftime('%Y-%m-%d %H:%M') }}</span
-            >
-            {% endif %}
-            <span class="chip">#{{ q.id }}</span>
+            >{% endif %} 
           </div>
         </article>
         {% endfor %}
@@ -72,5 +69,7 @@
       </div>
       {% endif %}
     </div>
+    
+  <script src="{{url_for('static',filename='js/index.js')}}"></script>
   </body>
 </html>
