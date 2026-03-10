@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template, redirect, url_for, session
 from dotenv import load_dotenv
 from models import db, thoughts_archive_test
-# from prediction import extract_text
+from prediction import extract_text
 import os
 from heic2png import HEIC2PNG
 from werkzeug.utils import secure_filename
@@ -45,7 +45,7 @@ def uploadImageView():
 
 @app.route("/upload-image", methods=["POST"])
 def upload_files():
-    print(request)
+    print(request.files)
     if 'files' not in request.files:
         return "No file part", 400
 
@@ -69,18 +69,18 @@ def upload_files():
             error_text = ""
             extracted_text = ""
             details = {}
-            # try:
-            #     details, extracted_text = extract_text(filepath,batch_dir)
-            # except Exception as e:
-            #     error_text =str(e)
-            # finally:
-            #     saved_files.append({
-            #         "image_url": f"{batch_id}/{filename}",
-            #         "filename": filename,
-            #         "text": extracted_text,
-            #         "details": details,
-            #         "error": error_text
-            #     })
+            try:
+                details, extracted_text = extract_text(filepath,batch_dir)
+            except Exception as e:
+                error_text =str(e)
+            finally:
+                saved_files.append({
+                    "image_url": f"{batch_id}/{filename}",
+                    "filename": filename,
+                    "text": extracted_text,
+                    "details": details,
+                    "error": error_text
+                })
 
     meta_path = os.path.join(batch_dir, "results.json")
     with open(meta_path, "w", encoding="utf-8") as fp:
@@ -176,4 +176,4 @@ def none_if_empty(value):
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()  # create tables if not exists
-    app.run(debug=True)
+    app.run(debug=False)

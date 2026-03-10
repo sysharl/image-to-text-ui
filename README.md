@@ -6,7 +6,7 @@ I often write down quotes, ideas, and reflections by hand in a notebook. Over ti
 This project also allowed me to explore **OCR integration, image processing, and building a simple yet functional user interface** for a practical personal workflow.
 
 
-## Project MotivationS
+## Project Motivations
 
 I keep a notebook where I write:
 
@@ -27,6 +27,8 @@ This repository contains the UI and logic that powers that workflow.
 
 Example of handwritten notes being converted into digital text.
 
+
+![Demo](./static/demo.gif)
 
 
 ## Features
